@@ -30,12 +30,15 @@ Vagrant.configure(2) do |config|
 	aws.access_key_id = ENV['AWS_KEY_ID']
 	aws.secret_access_key = ENV['AWS_ACCESS_KEY']
 	aws.keypair_name = ENV['AWS_KEYPAIR_NAME']
-	# aws image aws.ami = "ami-e1398992" 
-	aws.ami = "ami-f95ef58a" # ubuntu 
+	# aws image 
+	aws.ami = "ami-e1398992" 
+	# ubuntu 
+	#aws.ami = "ami-f95ef58a" 
 	aws.region = "eu-west-1"
 	aws.instance_type = "t2.micro"
-	aws.security_groups = ["default"]
-        override.ssh.username="ubuntu"
+	aws.security_groups = ["vagrant"]
+        #override.ssh.username="ubuntu"
+        override.ssh.username="itdept"
 	override.ssh.private_key_path = ENV['AWS_SSHKEY']
 
 	override.vm.box="dummy"
