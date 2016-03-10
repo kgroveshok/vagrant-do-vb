@@ -30,15 +30,16 @@ Vagrant.configure(2) do |config|
 	aws.access_key_id = ENV['AWS_KEY_ID']
 	aws.secret_access_key = ENV['AWS_ACCESS_KEY']
 	aws.keypair_name = ENV['AWS_KEYPAIR_NAME']
-	aws.ami = "ami-63b25203" 
+	# aws image aws.ami = "ami-e1398992" 
+	aws.ami = "ami-f95ef58a" # ubuntu 
 	aws.region = "eu-west-1"
-	aws.instance_type = "t1.micro"
+	aws.instance_type = "t2.micro"
 	aws.security_groups = ["default"]
-	#override.ssh.username = "ubuntu"
-	override.ssh.private_key_path = "path/to/your/awskey.pem"
+        override.ssh.username="ubuntu"
+	override.ssh.private_key_path = ENV['AWS_SSHKEY']
 
 	override.vm.box="dummy"
-config.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
+	config.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
   end
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
