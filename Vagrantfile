@@ -25,6 +25,20 @@ Vagrant.configure(2) do |config|
     provider.region = "nyc3"
     provider.size="512mb"
   end
+  config.vm.provider :aws do |aws, override|
+
+	aws.access_key_id = ENV['AWS_KEY_ID']
+	aws.secret_access_key = ENV['AWS_ACCESS_KEY']
+	aws.keypair_name = ENV['AWS_KEYPAIR_NAME']
+	aws.ami = "ami-9de416ea" #Ubuntu 12.04 LTS
+	aws.region = "eu-west-1"
+	aws.instance_type = "t1.micro"
+	aws.security_groups = ["default"]
+	#override.ssh.username = "ubuntu"
+	#override.ssh.private_key_path = "path/to/your/awskey.pem"
+
+
+  end
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
