@@ -10,6 +10,16 @@ Vagrant.configure(2) do |config|
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
 
+
+  # config.vm.define "node1" do |machine|
+  #  machine.vm.network "private_network", ip: "172.17.177.21"
+  #end
+
+  # config.vm.define "node2" do |machine|
+  #  machine.vm.network "private_network", ip: "172.17.177.22"
+  #end
+
+
   config.vm.hostname="dotest2"
 
   # Every Vagrant development environment requires a box. You can search for
@@ -90,6 +100,15 @@ Vagrant.configure(2) do |config|
   # config.push.define "atlas" do |push|
   #   push.app = "YOUR_ATLAS_USERNAME/YOUR_APPLICATION_NAME"
   # end
+
+
+	#
+	# Run Ansible from the Vagrant Host
+	#
+	config.vm.provision "ansible" do |ansible|
+		ansible.playbook = "playbook.yml"
+	end
+
 
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the

@@ -1,0 +1,12 @@
+---
+- hosts: all
+
+  tasks:
+  - name: get some packages
+    package:   name=* state=latest
+    package:   name=vim state=latest
+
+
+  - name: disable default selinux
+    selinux: policy=targeted state=permissive
+
